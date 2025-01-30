@@ -36,12 +36,12 @@ public class CastingBehaviour : MonoBehaviour
     //    }
     //}
     private void HandleSpell(string input)
-    {
+    {Debug.Log(input);
         CreateGameObjectWithPrefab(input);
     }
     private void CreateGameObjectWithPrefab(string name)
     {
-        GameObject prefab = Resources.Load<GameObject>(name);
+        GameObject prefab = Resources.Load<GameObject>($"{ResourceManager.Instance.resourceFolder}/{name}");
 
         if (prefab != null)
         {
