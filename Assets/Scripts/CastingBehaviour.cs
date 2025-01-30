@@ -1,50 +1,22 @@
+using TMPro;
 using UnityEngine;
 
 public class CastingBehaviour : MonoBehaviour
 {
-    private bool isTyping = false;
-    private string userInput = "";
-
+    public PlayerManager PlayerManager;
+    void Start()
+    {
+        PlayerManager = GetComponent<PlayerManager>();
+        if (PlayerManager.UIInputWindow != null)
+        {
+            var inputField = PlayerManager.UIInputWindow.GetComponentInChildren<TMP_InputField>();
+            inputField.onSubmit.AddListener(HandleSpell);
+        }
+    }
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            if (!isTyping)
-            {
-                isTyping = true;
-                userInput = "";
-                Debug.Log("Inizia a scrivere...");
-            }
-            else
-            {
-                isTyping = false;
-                CreateGameObjectWithPrefab(userInput);
-                //CreateGameObjectWithScript(userInput);
-            }
-        }
-
-        if (isTyping)
-        {
-            foreach (char c in Input.inputString)
-            {
-                if (c == '\b')
-                {
-                    if (userInput.Length > 0)
-                    {
-                        userInput = userInput.Substring(0, userInput.Length - 1);
-                    }
-                }
-                else if (c == '\n' || c == '\r')
-                {
-                    continue;
-                }
-                else
-                {
-                    userInput += c;
-                }
-            }
-        }
+       
     }
 
     //private void CreateGameObjectWithScript(string name)
@@ -63,6 +35,10 @@ public class CastingBehaviour : MonoBehaviour
     //        Debug.LogError($"Nessuno script trovato con il nome: {name}. Assicurati che esista e sia nello stesso namespace del progetto.");
     //    }
     //}
+    private void HandleSpell(string input)
+    {
+        CreateGameObjectWithPrefab(input);
+    }
     private void CreateGameObjectWithPrefab(string name)
     {
         GameObject prefab = Resources.Load<GameObject>(name);
