@@ -21,7 +21,6 @@ public class CastingBehaviour : MonoBehaviour
                 isTyping = false;
                 CreateGameObjectWithPrefab(userInput);
                 //CreateGameObjectWithScript(userInput);
-                Debug.Log("Creato GameObject con nome: " + userInput);
             }
         }
 
