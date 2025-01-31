@@ -25,6 +25,6 @@ public class UIManager : MonoBehaviour
     public void DeactivateInputField(TMP_InputField inputField)
     {
         inputField.DeactivateInputField();
-        inputField.SetTextWithoutNotify("");
+        //inputField.SetTextWithoutNotify("");
     }
 }

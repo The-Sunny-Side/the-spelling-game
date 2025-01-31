@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
@@ -7,7 +8,7 @@ public class ResourceManager : MonoBehaviour
 
     public string resourceFolder = ""; 
     public List<string> resourceNames;
-
+    public List<GameObject> totalResources;
     private void Awake()
     {
         if (Instance == null)
@@ -22,12 +23,13 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+
     private void LoadResourceNames()
     {
         resourceNames = new List<string>();
 
-        var resources = Resources.LoadAll<GameObject>(resourceFolder);
-        foreach (var resource in resources)
+        totalResources = Resources.LoadAll<GameObject>(resourceFolder).ToList();
+        foreach (var resource in totalResources)
         {
 
             resourceNames.Add(resource.name.ToLower()); 
