@@ -41,6 +41,10 @@ public class ResourceManager : MonoBehaviour
     public List<string> GetSuggestions(string input)
     {
         input = input.ToLower();
-        return resourceNames.FindAll(name => name.StartsWith(input));
+        if (!string.IsNullOrEmpty(input))
+        {
+            return resourceNames.FindAll(name => name.StartsWith(input));
+        }
+        else return new();
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DropdownSuggestionManager : MonoBehaviour
 {
-    public TMP_InputField inputField;       // Il campo di input da monitorare
-    public TMP_Dropdown dropdown;          // Il menu a tendina
+    public TMP_InputField inputField;      
+    public TMP_Dropdown dropdown;        
 
     private void Start()
     {
